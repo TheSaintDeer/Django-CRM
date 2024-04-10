@@ -5,14 +5,80 @@ html, body {
     height: 100%;
     width: 100%;
     color: #213A57;
-}
-
-.content {
-    display: inline-flex;
+    background-color: #355070;
 }
 
 .sidebar {
-    width: 15vw;
-    height: 100vh;
-    background-color: #0AD1C8;
+    height: 100%;
+    width: 260px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 10px;
+}
+
+.searcher {
+    padding: 0 20px;
+}
+
+.searcher > input {
+    width: 220px;
+    height: 20px;
+    border-radius: 16px;
+    border: 2px solid #818181;
+    color: #000;
+    font-size: 16px;
+    background-color: #cacaca;
+}
+
+.searcher > input:focus {
+    background-color: #FFF;
+}
+
+.chats {
+    height: calc(100% - 80px);
+    margin-top: 10px;
+}   
+
+.chat {
+    padding-left: 5px;
+    color: #FFF;
+    height: 50px;
+    border: 1px solid #FFF;
+    display: inline-flex;
+    align-items: center;
+    width: 250px;
+}
+
+.icon-chat > img {
+    height: 40px;
+    width: 40px;
+    background-color: #FFF;
+    border-radius: 50%;
+}
+
+.login {
+    padding: 0 20px;
+}
+
+.login > button {
+    height: 30px;
+    width: 220px;
+    background-color: rgb(19, 154, 19);
+    border: none;
+    border-radius: 16px;
+    color: #FFF;
+    transition: .3s;
+}
+
+.login > button:hover {
+    scale: 1.05;
+}
+
+.main {
+    margin-left: 260px;
+    padding: 10px;
 }

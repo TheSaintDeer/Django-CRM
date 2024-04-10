@@ -3,6 +3,12 @@ from django.contrib import admin
 from .models import Channel, Message
 
 # Register your models here.
-# admin.site.register(User, UserAdmin)
-admin.site.register(Channel)
+class ChannelAdmin(admin.ModelAdmin):
+    
+    list_display = ('name', 'icon')
+    search_fields = ('name', 'users')
+    list_filter = ('name', 'users')
+    prepopulated_fields = {'slug': ('name',)}
+
+admin.site.register(Channel, ChannelAdmin)
 admin.site.register(Message)

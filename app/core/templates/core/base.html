@@ -10,13 +10,39 @@
     <script src="{% static 'core/js/scripts.js' %}"></script>
   </head>
   <body>
-    <div class='content'>
-      <div class='sidebar'>
+    <div class='sidebar'>
+      <div class='searcher'>
+        <input type="text" placeholder="Search chat" name="search">
       </div>
-      <div class='chat'>
-        {% block content %}
-        {% endblock content %}
+      <div class='chats'>
+        {% if channels %}
+          {% for channel in channels %}
+          <div class='chat'>
+            {% if channel.icon %}
+              <div class='icon-chat'><img src="{{channel.icon.url}}"/></div>
+            {% else %}
+              <div class='icon-chat'><img src="/media/icons/2024/04/09/group-chat.png"/></div>
+            {% endif %}
+            {{ channel.name }}
+          </div>
+          {% endfor %}
+        {% else %}
+          <div>
+            Empty 
+          </div>
+        {% endif %}
       </div>
+      <div class='login'>
+        <button>
+          <a href="{% url 'reg' %}" style="text-decoration:none;color:white">
+            Login
+          </a>
+        </button>
+      </div>
+    </div>
+    <div class='main'>
+      {% block content %}
+      {% endblock content %}
     </div>
   </body>
 </html>
