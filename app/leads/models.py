@@ -10,6 +10,8 @@ class Lead(models.Model):
     first_name = models.CharField('First name', max_length=30)
     last_name = models.CharField('Last name', max_length=30)
     age = models.IntegerField('Age', default=0)
+    location = models.CharField('Location', max_length=225)
+    cell_phone = models.CharField('Cell phone', max_length=20)
 
     agent = models.ForeignKey('Agent', on_delete=models.CASCADE)
 
