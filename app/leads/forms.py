@@ -28,8 +28,19 @@ class LeadModelForm(forms.ModelForm):
         )
 
 
-class LeadForm(forms.Form):
+class AssignAgentForm(forms.Form):
+    agent = forms.ModelChoiceField(queryset=Agent.objects.none())
 
-    first_name = forms.CharField()
-    last_name = forms.CharField()
-    age = forms.IntegerField(min_value=0)
+    def __init__(self, *arg, **kwarg):
+        request = kwarg.pop("request")
+        agents = Agent.objects.filter(organisation=request.user.userprofile)
+        super(AssignAgentForm, self).__init__(*arg, **kwarg)
+        self.fields["agent"].queryset = agents
+
+
+class LeadCategoryUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Lead
+        fields = (
+            'category',
+        )
