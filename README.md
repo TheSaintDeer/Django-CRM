@@ -1,2 +1,2 @@
-# Django-project
-Django project
+# Django CRM 
+
